@@ -20,8 +20,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	private final UserDetailsService userDetailsService;  // we need to create the bean, so it's available to use, we do that in EmployeeServiceImpl
-	private final BCryptPasswordEncoder bCryptPasswordEncoder; //we need to create a bean, which we will do in Password encoder class
+	private final UserDetailsService userDetailsService;  // we need to create the bean, so it's available to use, we do that in EmployeeServiceImpl by implementing UserDetailsService(& ofc we need to override a the methiod loadUserbyUsername)
+	private final BCryptPasswordEncoder bCryptPasswordEncoder; //we need to create a bean, which we will do in Password encoder bean creator class
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
