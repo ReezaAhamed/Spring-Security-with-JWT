@@ -50,14 +50,14 @@ public class EmployeeServiceImpl implements EmployeeService, UserDetailsService 
 			authorities.add(new SimpleGrantedAuthority(role.getName())); // loop through each role and add them to authorities
 		});
 		
-		return new User(employee.getName(), employee.getPassword(), authorities); // we need to set the authorities which we will do in previous 3 lines
+		return new User(employee.getName(), employee.getPassword(), authorities); // we need to pass username, password and authorities. We need to set the authorities which we will do in previous 3 lines
 		
 	}
 
 	@Override
 	public Employee saveEmployee(Employee employee) {
 		// log.info("Saving new employee {} to the Database", employee.getName());
-		employee.setPassword(passwordEncoder.encode(employee.getPassword()));
+		employee.setPassword(passwordEncoder.encode(employee.getPassword())); // encrypt password before saving the user
 		return employeeRepository.save(employee);
 	}
 
