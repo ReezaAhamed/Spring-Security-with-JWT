@@ -38,7 +38,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter{
 			throws ServletException, IOException { // this is gonna intercept each and every request coming in
 
 		//we don't need to intercept login path "/api/login"...so,
-		if(request.getServletPath().equals("/api/login")) { //do nothing
+		if(request.getServletPath().equals("/api/login") || request.getServletPath().equals("/api/token/refresh")) { //do nothing //you need to specify the exact path here, i.e. can't use /**
 			filterChain.doFilter(request, response); // continue the request
 			
 		} else {
