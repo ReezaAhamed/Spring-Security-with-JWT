@@ -31,6 +31,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 	
 	
 	private final AuthenticationManager authenticationManager;
+	private final Algorithm algorithm;
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -50,7 +51,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 			Authentication authResult) throws IOException, ServletException { // user successfully logged in... as in attemptAuthentrication method is successful
 		
 		User user = (User)authResult.getPrincipal(); //logged in user
-		Algorithm algorithm = Algorithm.HMAC256("secret".getBytes()); // algorithm from auth0 library. we added the auth0 dependency to pom.xml
+		//Algorithm algorithm = algorithmForToken.getAlgorithm(); // algorithm from auth0 library. we added the auth0 dependency to pom.xml
 		
 		String accessToken = JWT.create()
 				.withSubject(user.getUsername()) // somethig unique about the user should come in subject
